@@ -398,7 +398,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── Storage ────────────────────────────────────────────────────
 const getReg   = () => JSON.parse(localStorage.getItem('accel_reg')   || '{}');
 const setReg   = r  => localStorage.setItem('accel_reg',  JSON.stringify(r));
@@ -679,4 +679,7 @@ function onDelInput(){document.getElementById('delConfirmBtn').disabled=document
 function execDelete(){if(!pendingDelId)return;setFiles(getFiles().filter(f=>f.id!==pendingDelId));pendingDelId=null;closeModal('deleteModal');renderFiles(document.getElementById('searchInput')?.value||'');toast('File deleted.','success');}
 
 // ── Toast ──────────────────────────────────────────────────────
-function toast(msg,type='success'){const w=document.getElementById('toastWrap');const t=document.createElement('div');t.className=`toas
+function toast(msg,type='success'){const w=document.getElementById('toastWrap');const t=document.createElement('div');t.className=`toast ${type}`;t.innerHTML=`<div class="tdot"></div><span>${msg}</span>`;w.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(16px)';setTimeout(()=>t.remove(),300);},3500);}
+</script>
+</body>
+</html>
